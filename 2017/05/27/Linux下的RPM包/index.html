@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux下的RPM包 | 小马笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在 Linux 操作系统下，几乎所有的软件均通过RPM 进行安装、卸载及管理等操作。RPM 的全称为Redhat Package Manager ，是由Redhat 公司提出的，用于管理Linux 下软件包的软件。Linux 安装时，除了几个核心模块以外，其余几乎所有的模块均通过RPM 完成安装。RPM 有五种操作模式，分别为：安装、卸载、升级、查询和验证。RPM 安装操作命令：1rpm -i 需">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下的RPM包">
+<meta property="og:url" content="http://www.thinkmar.net/2017/05/27/Linux下的RPM包/index.html">
+<meta property="og:site_name" content="小马笔记">
+<meta property="og:description" content="在 Linux 操作系统下，几乎所有的软件均通过RPM 进行安装、卸载及管理等操作。RPM 的全称为Redhat Package Manager ，是由Redhat 公司提出的，用于管理Linux 下软件包的软件。Linux 安装时，除了几个核心模块以外，其余几乎所有的模块均通过RPM 完成安装。RPM 有五种操作模式，分别为：安装、卸载、升级、查询和验证。RPM 安装操作命令：1rpm -i 需">
+<meta property="og:updated_time" content="2017-05-27T06:42:20.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux下的RPM包">
+<meta name="twitter:description" content="在 Linux 操作系统下，几乎所有的软件均通过RPM 进行安装、卸载及管理等操作。RPM 的全称为Redhat Package Manager ，是由Redhat 公司提出的，用于管理Linux 下软件包的软件。Linux 安装时，除了几个核心模块以外，其余几乎所有的模块均通过RPM 完成安装。RPM 有五种操作模式，分别为：安装、卸载、升级、查询和验证。RPM 安装操作命令：1rpm -i 需">
+  
+    <link rel="alternate" href="/atom.xml" title="小马笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">小马笔记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">为官的,家业凋零;富贵的,金银散尽;有恩的,死里逃生;无情的,分明报应;欠命的,命已还;欠泪的,泪已尽.冤冤相报实非轻,分离聚合皆前定.欲知命短问前生,老来富贵也真侥幸.看破的,遁入空门;痴迷的,枉送了性命.好一似食尽鸟投林,落了片白茫茫大地真干净!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.thinkmar.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux下的RPM包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/27/Linux下的RPM包/" class="article-date">
+  <time datetime="2017-05-27T06:32:53.000Z" itemprop="datePublished">2017-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习/">学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux下的RPM包
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <font size="3"><br>在 Linux 操作系统下，几乎所有的软件均通过RPM 进行安装、卸载及管理等操作。RPM 的全称为Redhat Package Manager ，是由Redhat 公司提出的，用于管理Linux 下软件包的软件。Linux 安装时，除了几个核心模块以外，其余几乎所有的模块均通过RPM 完成安装。RPM 有五种操作模式，分别为：安装、卸载、升级、查询和验证。<br><br>RPM 安装操作<br>命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -i 需要安装的包文件名</div></pre></td></tr></table></figure><br><br>举例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rpm -i example.rpm 安装 example.rpm 包；</div><div class="line">rpm -iv example.rpm 安装 example.rpm 包并在安装过程中显示正在安装的文件信息；</div><div class="line">rpm -ivh example.rpm 安装 example.rpm 包并在安装过程中显示正在安装的文件信息及安装进度；</div></pre></td></tr></table></figure><br><br>RPM 查询操作<br>命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -q …</div></pre></td></tr></table></figure><br><br>附加查询命令：<br>a 查询所有已经安装的包以下两个附加命令用于查询安装包的信息；<br>i 显示安装包的信息；<br>l 显示安装包中的所有文件被安装到哪些目录下；<br>s 显示安装版中的所有文件状态及被安装到哪些目录下；以下两个附加命令用于指定需要查询的是安装包还是已安装后的文件；<br>p 查询的是安装包的信息；<br>f 查询的是已安装的某文件信息；<br><br>举例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rpm -qa | grep tomcat4 查看 tomcat4 是否被安装；</div><div class="line">rpm -qip example.rpm 查看 example.rpm 安装包的信息；</div><div class="line">rpm -qif /bin/df 查看/bin/df 文件所在安装包的信息；</div><div class="line">rpm -qlf /bin/df 查看/bin/df 文件所在安装包中的各个文件分别被安装到哪个目录下；</div></pre></td></tr></table></figure><br><br>RPM 卸载操作<br>命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm <span class="_">-e</span> 需要卸载的安装包</div></pre></td></tr></table></figure><br><br>在卸载之前，通常需要使用rpm -q …命令查出需要卸载的安装包名称。<br><br>举例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm <span class="_">-e</span> tomcat4 卸载 tomcat4 软件包</div></pre></td></tr></table></figure><br><br>RPM 升级操作<br>命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -U 需要升级的包</div></pre></td></tr></table></figure><br><br>举例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -Uvh example.rpm 升级 example.rpm 软件包</div></pre></td></tr></table></figure><br><br>RPM 验证操作<br>命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -V 需要验证的包</div></pre></td></tr></table></figure><br><br>举例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rpm -Vf /etc/tomcat4/tomcat4.conf</div></pre></td></tr></table></figure><br><br>输出信息类似如下：<br><br>S.5….T c /etc/tomcat4/tomcat4.conf<br><br>其中，S 表示文件大小修改过，T 表示文件日期修改过。限于篇幅，更多的验证信息请您参考rpm 帮助文件：man rpm<br><br>RPM 的其他附加命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">--force 强制操作 如强制安装删除等；</div><div class="line">--requires 显示该包的依赖关系；</div><div class="line">--nodeps 忽略依赖关系并继续操作；</div></pre></td></tr></table></figure><br><br></font>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.thinkmar.net/2017/05/27/Linux下的RPM包/" data-id="cj36wu1i80001lgi2ijpbigrb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/05/27/Linux下expect使用-自动交互与明文密码/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux下expect使用-自动交互与明文密码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Expect/">Expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/红楼梦/">红楼梦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗词/">诗词</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Expect/" style="font-size: 10px;">Expect</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/红楼梦/" style="font-size: 10px;">红楼梦</a> <a href="/tags/脚本/" style="font-size: 15px;">脚本</a> <a href="/tags/诗词/" style="font-size: 10px;">诗词</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/27/Linux下的RPM包/">Linux下的RPM包</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/27/Linux下expect使用-自动交互与明文密码/">Linux下expect使用-自动交互与明文密码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/20/基于Oracle表空间传输方式的备份与恢复/">基于Oracle表空间传输方式的备份与恢复</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/红楼梦中词-好了歌/">红楼梦中词-好了歌</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/19/Shell-脚本使用命令备忘/">Shell 脚本使用命令备忘</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 ThinkMar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

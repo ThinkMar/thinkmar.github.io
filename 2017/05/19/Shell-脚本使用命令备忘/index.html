@@ -6,13 +6,13 @@
   <title>Shell 脚本使用命令备忘 | 小马笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Linux 系统配置1.添加/删除虚拟IP12$ ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  #添加$ ip addr del 192.168.100.22 dev eth0   #删除 Shell 脚本命令1.oracle超过最大连接数1kill -9 `ps -ef | grep &quot;LOCAL=NO&quot; | grep -v grep">
-<meta name="keywords" content="脚本,Shell,Linux">
+<meta name="keywords" content="脚本,Linux,Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell 脚本使用命令备忘">
 <meta property="og:url" content="http://www.thinkmar.net/2017/05/19/Shell-脚本使用命令备忘/index.html">
 <meta property="og:site_name" content="小马笔记">
 <meta property="og:description" content="Linux 系统配置1.添加/删除虚拟IP12$ ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  #添加$ ip addr del 192.168.100.22 dev eth0   #删除 Shell 脚本命令1.oracle超过最大连接数1kill -9 `ps -ef | grep &quot;LOCAL=NO&quot; | grep -v grep">
-<meta property="og:updated_time" content="2017-05-27T02:45:19.799Z">
+<meta property="og:updated_time" content="2017-05-27T02:52:31.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell 脚本使用命令备忘">
 <meta name="twitter:description" content="Linux 系统配置1.添加/删除虚拟IP12$ ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  #添加$ ip addr del 192.168.100.22 dev eth0   #删除 Shell 脚本命令1.oracle超过最大连接数1kill -9 `ps -ef | grep &quot;LOCAL=NO&quot; | grep -v grep">
@@ -97,12 +97,13 @@
         <h2 id="Linux-系统配置"><a href="#Linux-系统配置" class="headerlink" title="Linux 系统配置"></a>Linux 系统配置</h2><p><font size="3">1.添加/删除虚拟IP</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  <span class="comment">#添加</span></div><div class="line">$ ip addr del 192.168.100.22 dev eth0   <span class="comment">#删除</span></div></pre></td></tr></table></figure></p>
 <h2 id="Shell-脚本命令"><a href="#Shell-脚本命令" class="headerlink" title="Shell 脚本命令"></a>Shell 脚本命令</h2><p><font size="3">1.oracle超过最大连接数</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 `ps -ef | grep <span class="string">"LOCAL=NO"</span> | grep -v grep | awk -F <span class="string">' '</span> <span class="string">'&#123;print $2&#125;'</span>`</div></pre></td></tr></table></figure></p>
 <p><font size="3">2.shell脚本并行:先把B和C提交为子进程，然后用wait命令来等待所有子进程结束</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">./B &amp;</div><div class="line">./C &amp;</div><div class="line"><span class="built_in">wait</span></div><div class="line">./D</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p><font size="3">3.shell循环</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#example 1</span></div><div class="line"><span class="keyword">for</span> fname <span class="keyword">in</span> $(ls /check_dir)</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="keyword">if</span> [[ <span class="variable">$&#123;fname&#125;</span> =~ <span class="string">"include_word"</span> ]];<span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> <span class="variable">$&#123;fname&#125;</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="comment">#example 2</span></div><div class="line">cat <span class="variable">$file_name</span> | <span class="keyword">while</span> <span class="built_in">read</span> line</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"output every line is <span class="variable">$&#123;line&#125;</span>"</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.thinkmar.net/2017/05/19/Shell-脚本使用命令备忘/" data-id="cj36oj0gb0005v8i2r56pojvm" class="article-share-link">Share</a>
+      <a data-url="http://www.thinkmar.net/2017/05/19/Shell-脚本使用命令备忘/" data-id="cj36wu1ii0004lgi2timje4cf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell/">Shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/脚本/">脚本</a></li></ul>
@@ -151,7 +152,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/红楼梦/">红楼梦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗词/">诗词</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Expect/">Expect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/红楼梦/">红楼梦</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脚本/">脚本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/诗词/">诗词</a></li></ul>
     </div>
   </div>
 
@@ -161,7 +162,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/红楼梦/" style="font-size: 10px;">红楼梦</a> <a href="/tags/脚本/" style="font-size: 10px;">脚本</a> <a href="/tags/诗词/" style="font-size: 10px;">诗词</a>
+      <a href="/tags/Expect/" style="font-size: 10px;">Expect</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Oracle/" style="font-size: 10px;">Oracle</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/红楼梦/" style="font-size: 10px;">红楼梦</a> <a href="/tags/脚本/" style="font-size: 15px;">脚本</a> <a href="/tags/诗词/" style="font-size: 10px;">诗词</a>
     </div>
   </div>
 
@@ -183,6 +184,14 @@
       <ul>
         
           <li>
+            <a href="/2017/05/27/Linux下的RPM包/">Linux下的RPM包</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/27/Linux下expect使用-自动交互与明文密码/">Linux下expect使用-自动交互与明文密码</a>
+          </li>
+        
+          <li>
             <a href="/2017/05/20/基于Oracle表空间传输方式的备份与恢复/">基于Oracle表空间传输方式的备份与恢复</a>
           </li>
         
@@ -192,10 +201,6 @@
         
           <li>
             <a href="/2017/05/19/Shell-脚本使用命令备忘/">Shell 脚本使用命令备忘</a>
-          </li>
-        
-          <li>
-            <a href="/2017/05/19/hello-world/">Hexo 基本使用命令</a>
           </li>
         
       </ul>
