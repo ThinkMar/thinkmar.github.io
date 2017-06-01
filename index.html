@@ -267,15 +267,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Expect</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -487,7 +487,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Linux-系统配置"><a href="#Linux-系统配置" class="headerlink" title="Linux 系统配置"></a>Linux 系统配置</h2><p><font size="3">1.添加/删除虚拟IP</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  <span class="comment">#添加</span></div><div class="line">$ ip addr del 192.168.100.22 dev eth0   <span class="comment">#删除</span></div></pre></td></tr></table></figure></p>
+        <h2 id="Linux-系统配置"><a href="#Linux-系统配置" class="headerlink" title="Linux 系统配置"></a>Linux 系统配置</h2><p><font size="3">1.添加/删除虚拟IP</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  <span class="comment">#添加</span></div><div class="line">ip addr del 192.168.100.22 dev eth0   <span class="comment">#删除</span></div></pre></td></tr></table></figure></p>
 <h2 id="Shell-脚本命令"><a href="#Shell-脚本命令" class="headerlink" title="Shell 脚本命令"></a>Shell 脚本命令</h2><p><font size="3">1.oracle超过最大连接数</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">kill</span> -9 `ps -ef | grep <span class="string">"LOCAL=NO"</span> | grep -v grep | awk -F <span class="string">' '</span> <span class="string">'&#123;print $2&#125;'</span>`</div></pre></td></tr></table></figure></p>
 <p><font size="3">2.shell脚本并行:先把B和C提交为子进程，然后用wait命令来等待所有子进程结束</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">./B &amp;</div><div class="line">./C &amp;</div><div class="line"><span class="built_in">wait</span></div><div class="line">./D</div></pre></td></tr></table></figure></p>
         
@@ -505,11 +505,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -582,6 +582,37 @@
 <h3 id="6-发布hexo到github-page"><a href="#6-发布hexo到github-page" class="headerlink" title="6.发布hexo到github page"></a>6.发布hexo到github page</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</div></pre></td></tr></table></figure>
 <h2 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h2><h3 id="1-插入图片"><a href="#1-插入图片" class="headerlink" title="1.插入图片"></a>1.插入图片</h3><h4 id="1-1代码样例"><a href="#1-1代码样例" class="headerlink" title="1.1代码样例"></a>1.1代码样例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% img /images/pic_example.jpg This is an example image %&#125;</div><div class="line">图片路径：D:/thinkmar.github.io/source/images/pic_example.jpg</div></pre></td></tr></table></figure>
 <h4 id="1-2显示效果"><a href="#1-2显示效果" class="headerlink" title="1.2显示效果"></a>1.2显示效果</h4><img src="/images/pic_example.jpg" title="This is an example image">
+<h3 id="2-流程图"><a href="#2-流程图" class="headerlink" title="2.流程图"></a>2.流程图</h3><h4 id="2-1显示效果"><a href="#2-1显示效果" class="headerlink" title="2.1显示效果"></a>2.1显示效果</h4><div id="flowchart-0" class="flow-chart"></div>
+
+<p><div id="flowchart-1" class="flow-chart"></div></p>
+<h4 id="2-2代码样例"><a href="#2-2代码样例" class="headerlink" title="2.2代码样例"></a>2.2代码样例</h4><p>``` flow<br>st=&gt;start: Start|past:&gt;<a href="http://www.google.com[blank" target="_blank" rel="external">http://www.google.com[blank</a>]<br>e=&gt;end: End:&gt;<a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a><br>op1=&gt;operation: My Operation|past<br>op2=&gt;operation: Stuff|current<br>sub1=&gt;subroutine: My Subroutine|invalid<br>cond=&gt;condition: Yes<br>or No?|approved:&gt;<a href="http://www.google.com" target="_blank" rel="external">http://www.google.com</a><br>c2=&gt;condition: Good idea|rejected<br>io=&gt;inputoutput: catch something…|request</p>
+<p>st-&gt;op1(right)-&gt;cond<br>cond(yes, right)-&gt;c2<br>cond(no)-&gt;sub1(left)-&gt;op1<br>c2(yes)-&gt;io-&gt;e<br>c2(no)-&gt;op2-&gt;e<br>```</p>
+<p>```flow<br>st=&gt;start: Start:&gt;<a href="https://www.zybuluo.com" target="_blank" rel="external">https://www.zybuluo.com</a><br>io=&gt;inputoutput: verification<br>op=&gt;operation: Your Operation<br>cond=&gt;condition: Yes or No?<br>sub=&gt;subroutine: Your Subroutine<br>e=&gt;end</p>
+<p>st-&gt;io-&gt;op-&gt;cond<br>cond(yes)-&gt;e<br>cond(no)-&gt;sub-&gt;io<br>```</p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes
+or No?|approved:>http://www.google.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script><textarea id="flowchart-1-code" style="display: none">st=>start: Start:>https://www.zybuluo.com
+io=>inputoutput: verification
+op=>operation: Your Operation
+cond=>condition: Yes or No?
+sub=>subroutine: Your Subroutine
+e=>end
+
+st->io->op->cond
+cond(yes)->e
+cond(no)->sub->io</textarea><textarea id="flowchart-1-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-1-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-1", options);</script></p>
 
       
 
@@ -723,15 +754,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">脚本</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Expect</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
