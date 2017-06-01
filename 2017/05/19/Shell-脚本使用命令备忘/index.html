@@ -9,13 +9,13 @@
   <title>Shell 脚本使用命令备忘 | 小马笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Linux 系统配置1.添加/删除虚拟IP12ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  #添加ip addr del 192.168.100.22 dev eth0   #删除 Shell 脚本命令1.oracle超过最大连接数1kill -9 `ps -ef | grep &quot;LOCAL=NO&quot; | grep -v grep | a">
-<meta name="keywords" content="Linux,脚本,Shell">
+<meta name="keywords" content="脚本,Linux,Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell 脚本使用命令备忘">
 <meta property="og:url" content="http://www.thinkmar.net/2017/05/19/Shell-脚本使用命令备忘/index.html">
 <meta property="og:site_name" content="小马笔记">
 <meta property="og:description" content="Linux 系统配置1.添加/删除虚拟IP12ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  #添加ip addr del 192.168.100.22 dev eth0   #删除 Shell 脚本命令1.oracle超过最大连接数1kill -9 `ps -ef | grep &quot;LOCAL=NO&quot; | grep -v grep | a">
-<meta property="og:updated_time" content="2017-06-01T08:13:07.996Z">
+<meta property="og:updated_time" content="2017-06-01T09:45:58.438Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shell 脚本使用命令备忘">
 <meta name="twitter:description" content="Linux 系统配置1.添加/删除虚拟IP12ifconfig eth0:1 192.168.100.22 netmask 255.255.255.0  #添加ip addr del 192.168.100.22 dev eth0   #删除 Shell 脚本命令1.oracle超过最大连接数1kill -9 `ps -ef | grep &quot;LOCAL=NO&quot; | grep -v grep | a">
@@ -184,6 +184,7 @@
 <a id="more"></a>
 <p><font size="3">3.shell循环</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#example 1</span></div><div class="line"><span class="keyword">for</span> fname <span class="keyword">in</span> $(ls /check_dir)</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="keyword">if</span> [[ <span class="variable">$&#123;fname&#125;</span> =~ <span class="string">"include_word"</span> ]];<span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> <span class="variable">$&#123;fname&#125;</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="comment">#example 2</span></div><div class="line">cat <span class="variable">$file_name</span> | <span class="keyword">while</span> <span class="built_in">read</span> line</div><div class="line"><span class="keyword">do</span></div><div class="line">    <span class="built_in">echo</span> <span class="string">"output every line is <span class="variable">$&#123;line&#125;</span>"</span></div><div class="line"><span class="keyword">done</span></div></pre></td></tr></table></figure></p>
 <p><font size="3">4.awk中NF:浏览记录的域的个数 $NF:最后一个Field(列)</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cat tes.txt </div><div class="line">1234/56/78</div><div class="line">12dd345789</div><div class="line">1111/22222</div><div class="line"></div><div class="line">cat tes.txt | awk -F <span class="string">'/'</span> <span class="string">'&#123;print NF,$NF&#125;'</span></div><div class="line">3 78</div><div class="line">1 12dd345789</div><div class="line">2 22222</div></pre></td></tr></table></figure></p>
+<p><font size="3">5.去掉Linux文件中^M字符(Windowns下编码问题)</font><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/^M//g'</span> filename</div><div class="line"><span class="comment">#注意：^M的输入方式是 Ctrl + V ，然后Ctrl + M</span></div></pre></td></tr></table></figure></p>
 
       
 
@@ -197,11 +198,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -405,15 +406,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">脚本</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Expect</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -425,19 +426,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">诗词</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">红楼梦</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">诗词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">红楼梦</a>
               </li>
             
             <div class="clearfix"></div>
