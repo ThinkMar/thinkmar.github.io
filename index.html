@@ -159,6 +159,129 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Oracle查询表空间使用情况" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/16/Oracle查询表空间使用情况/">Oracle查询表空间使用情况</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/16/Oracle查询表空间使用情况/" class="archive-article-date">
+  	<time datetime="2017-06-16T01:45:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><font size="3">查询各个表空间当前使用大小及占比</font><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">upper</span>(f.tablespace_name) <span class="keyword">as</span> tablespace_name,</div><div class="line">       d.tot_grootte_mb <span class="keyword">as</span> <span class="string">"Size(MB)"</span>,</div><div class="line">       f.total_bytes <span class="keyword">as</span> <span class="string">"Free size(MB)"</span>,</div><div class="line">       d.tot_grootte_mb - f.total_bytes <span class="keyword">as</span> <span class="string">"Already in use(MB)"</span>,</div><div class="line">       <span class="keyword">round</span>((d.tot_grootte_mb - f.total_bytes) / d.tot_grootte_mb * <span class="number">100</span>, <span class="number">2</span>) <span class="keyword">as</span> <span class="string">"Percent used(%)"</span>,</div><div class="line">       <span class="keyword">round</span>(d.maxbytes / <span class="number">1024</span>) <span class="keyword">as</span> <span class="string">"Maximum value(GB)"</span>,</div><div class="line">       <span class="keyword">round</span>((d.tot_grootte_mb - f.total_bytes) / d.maxbytes * <span class="number">100</span>, <span class="number">2</span>) <span class="keyword">as</span> <span class="string">"Percent of maximum value%"</span></div><div class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> tablespace_name,</div><div class="line">               <span class="keyword">round</span>(<span class="keyword">sum</span>(<span class="keyword">bytes</span>) / (<span class="number">1024</span> * <span class="number">1024</span>), <span class="number">2</span>) total_bytes</div><div class="line">          <span class="keyword">from</span> sys.dba_free_space</div><div class="line">         <span class="keyword">group</span> <span class="keyword">by</span> tablespace_name) f,</div><div class="line">       (<span class="keyword">select</span> dd.tablespace_name,</div><div class="line">               <span class="keyword">round</span>(<span class="keyword">sum</span>(dd.bytes) / (<span class="number">1024</span> * <span class="number">1024</span>), <span class="number">2</span>) tot_grootte_mb,</div><div class="line">               <span class="keyword">round</span>(<span class="keyword">sum</span>(<span class="keyword">case</span></div><div class="line">                           <span class="keyword">when</span> dd.autoextensible = <span class="string">'YES'</span> <span class="keyword">then</span></div><div class="line">                            dd.maxbytes</div><div class="line">                           <span class="keyword">else</span></div><div class="line">                            dd.bytes</div><div class="line">                         <span class="keyword">end</span>) / (<span class="number">1024</span> * <span class="number">1024</span>),</div><div class="line">                     <span class="number">2</span>) maxbytes</div><div class="line">          <span class="keyword">from</span> sys.dba_data_files dd</div><div class="line">         <span class="keyword">group</span> <span class="keyword">by</span> dd.tablespace_name) d</div><div class="line"> <span class="keyword">where</span> d.tablespace_name = f.tablespace_name</div><div class="line"> <span class="keyword">order</span> <span class="keyword">by</span> tablespace_name;</div></pre></td></tr></table></figure></p>
+<p><font size="3">plsql查询结果</font><br><img src="/images/pic_tablespace_01.png" title="查询结果示例"></p>
+<p><font size="3">Toad统计</font><br><img src="/images/pic_tablespace_02.png" title="查询结果示例"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/16/Oracle查询表空间使用情况/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-多线程中操作subList集合问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/多线程中操作subList集合问题/">多线程中操作subList集合问题</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/多线程中操作subList集合问题/" class="archive-article-date">
+  	<time datetime="2017-06-12T23:18:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/多线程中操作subList集合问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-常用网站记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -427,15 +550,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Expect</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
@@ -665,11 +788,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">脚本</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -883,10 +1006,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">脚本</a>
               </li>
              
@@ -895,11 +1014,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -908,6 +1023,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
