@@ -8,13 +8,17 @@
   <link rel="dns-prefetch" href="http://www.thinkmar.net">
   <title>多线程中操作subList集合问题 | 和光同尘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="subList拆分集合作为参数传递，对其进行排序等操作引发异常java.util.ConcurrentModificationException12345678910private static void batchProcess(List&amp;lt;TestBean&amp;gt; batchList, ExecutorService executorService, int patchNum, Strin">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
 <meta property="og:title" content="多线程中操作subList集合问题">
 <meta property="og:url" content="http://www.thinkmar.net/2017/06/13/多线程中操作subList集合问题/index.html">
 <meta property="og:site_name" content="和光同尘">
-<meta property="og:updated_time" content="2017-06-12T23:18:00.467Z">
+<meta property="og:description" content="subList拆分集合作为参数传递，对其进行排序等操作引发异常java.util.ConcurrentModificationException12345678910private static void batchProcess(List&amp;lt;TestBean&amp;gt; batchList, ExecutorService executorService, int patchNum, Strin">
+<meta property="og:updated_time" content="2017-07-19T02:51:02.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程中操作subList集合问题">
+<meta name="twitter:description" content="subList拆分集合作为参数传递，对其进行排序等操作引发异常java.util.ConcurrentModificationException12345678910private static void batchProcess(List&amp;lt;TestBean&amp;gt; batchList, ExecutorService executorService, int patchNum, Strin">
   
     <link rel="alternative" href="/atom.xml" title="和光同尘" type="application/atom+xml">
   
@@ -178,7 +182,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p><font size="3">subList拆分集合作为参数传递，对其进行排序等操作引发异常java.util.ConcurrentModificationException</font><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">batchProcess</span><span class="params">(List&lt;TestBean&gt; batchList, ExecutorService executorService, <span class="keyword">int</span> patchNum, String batchFlag)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> batchListSize = batchList.size();</div><div class="line">        <span class="keyword">int</span> loopCnt = batchListSize / patchNum;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; loopCnt; c++)</div><div class="line">        &#123;</div><div class="line">            executorService.execute(<span class="keyword">new</span> ExecuteThread(batchList.subList(c * patchNum, (c + <span class="number">1</span>) * patchNum), batchFlag + c));</div><div class="line">        &#125;</div><div class="line">        executorService.execute(<span class="keyword">new</span> ExecuteThread(batchList.subList(loopCnt * patchNum, batchListSize), batchFlag + loopCnt));</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p><font size="3">多线程调用</font></p>
+<pre><code class="java">ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">6</span>);
+        batchProcess(list, executorService, <span class="number">10</span>, <span class="string">"TEST_"</span>);
+        executorService.shutdown();
+        <span class="keyword">try</span>
+        {
+            <span class="keyword">while</span> (!executorService.isTerminated())
+            {
+                Thread.sleep(<span class="number">200</span>);
+            }
+        }
+        <span class="keyword">catch</span> (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+</code></pre>
+<p><font size="3">规避</font></p>
+<pre><code class="java">List&lt;TestBean&gt; list2 = <span class="keyword">new</span> ArrayList&lt;TestBean&gt;();
+            list2.addAll(list);
+            List&lt;TestBean&gt; sortList = sortList(list2);
+</code></pre>
+
       
 
       
@@ -186,7 +212,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习/" class="article-tag-list-link color3">学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -394,6 +442,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
